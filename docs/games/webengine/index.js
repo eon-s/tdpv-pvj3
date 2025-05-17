@@ -819,12 +819,13 @@ const Engine = (function () {
 			 * @param {EngineConfig} override An optional configuration override.
 			 * @return {Promise} Promise that resolves once the game started.
 			 */
-			startGame: function (override, newBasePath) {
+			startGame: function (override, newBasePath, pckname) {
 				console.log(newBasePath);
 				this.config.update(override);
 				// Add main-pack argument.
 				const exe = this.config.executable;
-				const pack = this.config.mainPack || `${exe}.pck`;
+				//const pack = this.config.mainPack || `${exe}.pck`;
+				const pack = this.config.mainPack || `${pckname}.pck`;
 				this.config.args = ['--main-pack', pack].concat(this.config.args);
 				// Start and init with execName as loadPath if not inited.
 				const me = this;
